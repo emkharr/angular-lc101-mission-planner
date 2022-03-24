@@ -1,24 +1,40 @@
 <div class="displayBox">
-    <h3>Equipment</h3>
-    <ol>
-
-        <!-- [class.active]="item.mass+cargoMass<=maximumAllowedMass && cargoHold.length < maxItems" -->
-        <li *ngFor="let item of equipmentItems">
-            <button (click)="addItem(item)" [class.active]="item.mass+cargoMass<=maximumAllowedMass && cargoHold.length<maxItems" [disabled]="cargoHold.length===maxItems || (cargoMass + item.mass)>maximumAllowedMass" >Add to Cargo Hold</button>
-            {{item.name}}, {{item.mass}} kg
-        </li>
-    </ol>
+  <h3>Equipment</h3>
+  <ol>
+    <!-- [class.active]="item.mass+cargoMass<=maximumAllowedMass && cargoHold.length < maxItems" -->
+    <li *ngFor="let item of equipmentItems">
+      <button
+        (click)="addItem(item)"
+        [class.active]="
+          item.mass + cargoMass <= maximumAllowedMass &&
+          cargoHold.length < maxItems
+        "
+        [disabled]="
+          cargoHold.length === maxItems ||
+          cargoMass + item.mass > maximumAllowedMass
+        "
+      >
+        Add to Cargo Hold
+      </button>
+      {{ item.name }}, {{ item.mass }} kg
+    </li>
+  </ol>
 </div>
 
-<hr>
+<hr />
 
-<div class = "displayBox">
-    <h3>Cargo Hold: {{cargoHold.length}}/{{maxItems}} Spots Filled</h3>
-    <ol>
-        <li *ngFor="let equipment of cargoHold">{{equipment.name}}</li>
-    </ol>
-    <p>Mass in Hold: {{cargoMass}} kg</p>
-    <p [class.nearMaxMass]="nearCapacity">Mass Budget Remaining: {{maximumAllowedMass-cargoMass}} kg</p>
-    <button (click)="cargoHold = []; cargoMass = 0; nearCapacity=false">Empty Cargo Hold</button>
+<div class="displayBox">
+  <h3>Cargo Hold: {{ cargoHold.length }}/{{ maxItems }} Spots Filled</h3>
+  <ol>
+    <li *ngFor="let equipment of cargoHold">{{ equipment.name }}</li>
+  </ol>
+  <p>Mass in Hold: {{ cargoMass }} kg</p>
+  <p [ngClass]="{ 'nearMaxMass' : maximumAllowedMass-cargoMass <= 200 } ">
+    Mass Budget Remaining: {{ maximumAllowedMass - cargoMass }} kg
+  </p>
+  <button (click)="cargoHold = []; cargoMass = 0; nearCapacity = false">
+    Empty Cargo Hold
+  </button>
+  <!-- <p [class.nearMaxMass]="nearCapacity">Mass Budget Remaining: {{maximumAllowedMass-cargoMass}} kg</p>
+    <button (click)="cargoHold = []; cargoMass = 0; nearCapacity=false">Empty Cargo Hold</button> -->
 </div>
-

@@ -7,6 +7,7 @@ import { CrewComponent } from './crew/crew.component';
 import { EquipmentComponent } from './equipment/equipment.component';
 import { ExperimentsComponent } from './experiments/experiments.component';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { FormsModule } from '@angular/forms';
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
