@@ -6,39 +6,6 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./equipment.component.css"],
 })
 export class EquipmentComponent implements OnInit {
-<<<<<<< HEAD
-  equipment: string[] = [
-    "Habitat dome",
-    "Drones",
-    "Food containers",
-    "Oxygen tanks",
-  ];
-  equipInput: string = "";
-  itemBeingEdited: string = null;
-
-  constructor() {}
-
-  ngOnInit() {}
-
-  add(item: string) {
-    this.equipment.push(item);
-    this.equipInput = "";
-  }
-
-  edit(item: string) {
-    this.itemBeingEdited = item;
-  }
-
-  remove(item: string) {
-    let index = this.equipment.indexOf(item);
-    this.equipment.splice(index, 1);
-  }
-
-  save(updatedItem: string) {
-    let index = this.equipment.indexOf(this.itemBeingEdited);
-    this.equipment[index] = updatedItem;
-  }
-=======
    equipmentItems: object[] = [
        {name: 'Duct Tape', mass: 0.5},
        {name: 'Space Camera', mass: 20},
@@ -54,12 +21,17 @@ export class EquipmentComponent implements OnInit {
    cargoMass: number = 0;
    maximumAllowedMass: number = 2000;
    maxItems: number = 10;
+  //  nearCapacity=false;
 
    constructor() { }
 
    ngOnInit() { }
 
-   // Code your addItem function here:
+   addItem(equipment:object):boolean {
+     this.cargoHold.push(equipment);
+     this.cargoMass += equipment['mass'];
+    
+     return this.maximumAllowedMass - this.cargoMass <= 200;
+   }
    
->>>>>>> df088481627ca8d82d5d5e6537a62e28242f4ab9
 }

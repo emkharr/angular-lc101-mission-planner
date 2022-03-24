@@ -11,7 +11,6 @@ export class HeaderComponent implements OnInit {
   rocketName: string = "ICAN";
   editingRocket: boolean = false;
   editingMission: boolean = false;
-  editingRocket: boolean = false;
   
   constructor() { }
 
@@ -27,8 +26,4 @@ export class HeaderComponent implements OnInit {
     this.rocketName = updatedName;
     this.editingRocket = false;
   }
-<<<<<<< HEAD
-
-=======
->>>>>>> df088481627ca8d82d5d5e6537a62e28242f4ab9
 }
